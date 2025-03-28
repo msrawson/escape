@@ -36,11 +36,11 @@ This is useful for Act 2 when Karen says something like "there's something happe
 
 ## Clock Speed
 
-You can make the timer run faster or slower use the + and - buttons. The slowest that time can run on screen is half normal speed, i.e. 1 second on screen is 2 seconds in real time. The fastest is twice normal speed. This should help you to synchronise the timer with the play.
+When viewing the Timer screen, you can make the timer run faster or slower use the + and - buttons. The slowest that time can run on screen is half normal speed, i.e. 1 second on screen is 2 seconds in real time. The fastest is twice normal speed. This should help you to synchronise the timer with the play.
 
 Press \* to reset passage of time to normal.
 
-Alternatively, when on the Timer screen, you can also use the left and right arrows to slow down or speed up the clock. The up and down arrows both reset clock speed to normal.
+Alternatively, you can also use the left and right arrows to slow down or speed up the clock. The up and down arrows both reset clock speed to normal.
 
 ## Change Remaining Time
 
