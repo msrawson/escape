@@ -5,9 +5,9 @@ TEXT_OUTLINE = 2  # pixels thick (lower looks better close up)
 
 # pygame setup
 pygame.init()
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 # screen = pygame.display.set_mode(size=(1920, 1080)) #full HD
-screen = pygame.display.set_mode(size=(1366, 768))  # regular HD
+# screen = pygame.display.set_mode(size=(1366, 768))  # regular HD
 
 clock = pygame.time.Clock()
 running = True
@@ -147,6 +147,10 @@ def select_hint(event: pygame.event.Event):
         x = int(event.unicode)
         if x <= len(hints):  # deliberately allowing 0 here
             hint_number = x
+    elif event.key == pygame.K_LEFT:
+        hint_number = max(0, hint_number - 1)
+    elif event.key == pygame.K_RIGHT:
+        hint_number = min(len(hints), hint_number + 1)
 
 
 def draw_hint() -> None:
@@ -165,6 +169,10 @@ def select_message(event: pygame.event.Event):
         x = int(event.unicode)
         if x <= 2:  # deliberately allowing 0 here
             message_number = x
+    elif event.key == pygame.K_LEFT:
+        message_number = max(0, message_number - 1)
+    elif event.key == pygame.K_RIGHT:
+        message_number = min(2, message_number + 1)
 
 
 def draw_message():
@@ -180,11 +188,11 @@ def draw_message():
 def change_clock_speed(event_key):
     global clock_speed
     match event_key:
-        case pygame.K_PLUS | pygame.K_KP_PLUS:
+        case pygame.K_PLUS | pygame.K_KP_PLUS | pygame.K_RIGHT:
             clock_speed = min(2.0, clock_speed + 0.1)  # 10 steps to 2x normal
-        case pygame.K_MINUS | pygame.K_KP_MINUS:
+        case pygame.K_MINUS | pygame.K_KP_MINUS | pygame.K_LEFT:
             clock_speed = max(0.5, clock_speed - 0.05)  # 10 steps to normal/2
-        case pygame.K_ASTERISK | pygame.K_KP_MULTIPLY:
+        case pygame.K_ASTERISK | pygame.K_KP_MULTIPLY | pygame.K_UP | pygame.K_DOWN:
             clock_speed = 1.0
 
 
