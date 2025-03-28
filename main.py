@@ -1,4 +1,5 @@
 import pygame
+import random
 
 
 TEXT_OUTLINE = 2  # pixels thick (lower looks better close up)
@@ -59,6 +60,7 @@ screen.blit(office_background, (0, 0))
 TIMER_MODE = 1
 HINT_MODE = 2
 MESSAGE_MODE = 3
+FLICKER_MODE = 4
 mode = TIMER_MODE
 timer_running = False
 
@@ -114,6 +116,21 @@ def draw_timer() -> None:
               screen.get_height() * 0.45 / pixels_per_point)
 
 
+def draw_flicker() -> None:
+    global screen
+    screen.fill("Black")
+    w = screen.get_width()
+    h = screen.get_height()
+    left = 0
+    top = 0
+    size = 20
+    for x in range(0, w, size):
+        for y in range(0, h, size):
+            grey = random.randint(0, 255)
+            pygame.draw.rect(screen, (grey, grey, grey), (x, y, size, size))
+    draw_text("STAND BY", screen.get_height() * 0.4 / pixels_per_point)
+
+
 def advance_time():
     global minutes_left, clock, timer_running
     if timer_running:
@@ -138,6 +155,8 @@ def select_mode(event_key) -> None:
         case pygame.K_c:
             changing_timer = not changing_timer
             new_time = ""
+        case pygame.K_f:
+            mode = FLICKER_MODE
 
 
 def panic_button() -> None:
@@ -255,6 +274,8 @@ while running:
         draw_hint()
     elif mode == MESSAGE_MODE:
         draw_message()
+    elif mode == FLICKER_MODE:
+        draw_flicker()
     else:
         draw_timer()
 
