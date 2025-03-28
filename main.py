@@ -215,7 +215,9 @@ def draw_message():
 
 
 def change_clock_speed(event_key):
-    global clock_speed
+    global clock_speed, mode
+    if mode != TIMER_MODE:
+        return
     match event_key:
         case pygame.K_PLUS | pygame.K_KP_PLUS | pygame.K_RIGHT:
             clock_speed = min(2.0, clock_speed + 0.1)  # 10 steps to 2x normal
