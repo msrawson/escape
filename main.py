@@ -121,14 +121,16 @@ def advance_time():
 
 
 def select_mode(event_key) -> None:
-    global mode, escape_count, timer_running, changing_timer, new_time
+    global mode, escape_count, timer_running, changing_timer, new_time, hint_number, message_number
     match event_key:
         case pygame.K_t:
             mode = TIMER_MODE
         case pygame.K_h:
             mode = HINT_MODE
+            hint_number = 0
         case pygame.K_m:
             mode = MESSAGE_MODE
+            message_number = 0
         case pygame.K_s:
             timer_running = not timer_running
         case pygame.K_ESCAPE:
@@ -136,6 +138,14 @@ def select_mode(event_key) -> None:
         case pygame.K_c:
             changing_timer = not changing_timer
             new_time = ""
+
+
+def panic_button() -> None:
+    "Press the space bar at any time to jump back to Timer mode."
+    global mode, changing_timer, new_time
+    mode = TIMER_MODE
+    changing_timer = False
+    new_time = ""
 
 
 def select_hint(event: pygame.event.Event):
@@ -227,7 +237,9 @@ while running:
             running = False
 
         elif event.type == pygame.KEYDOWN:
-            if changing_timer:
+            if event.unicode == " ":
+                panic_button()
+            elif changing_timer:
                 change_timer(event)
             else:
                 select_mode(event.key)
