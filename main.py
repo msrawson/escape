@@ -228,9 +228,9 @@ def change_clock_speed(event_key):
 
 
 def game_over():
-    global running
+    global running, screen
     draw_background()
-    draw_text("GAME\nOVER!", 400)
+    draw_text("GAME\nOVER!", screen.get_height() * 0.4 / pixels_per_point)
 
 
 def change_timer(event: pygame.event.Event):
@@ -241,8 +241,12 @@ def change_timer(event: pygame.event.Event):
         try:
             global minutes_left
             new_time = float(new_time)
-            if 0 <= new_time <= 60:
-                minutes_left = new_time
+            m = int(new_time)
+            s = int((new_time - m) * 100)
+            if (0 <= m < 60 and s < 60) or (m == 60 and s == 0):
+                minutes_left = m + s / 60.0
+            # if 0 <= new_time <= 60:
+            #     minutes_left = new_time
         except ValueError:
             pass
         changing_timer = False
