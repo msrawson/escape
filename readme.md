@@ -44,11 +44,11 @@ Alternatively, you can also use the left and right arrows to slow down or speed 
 
 ## Change Remaining Time
 
-To change the remaining time left on the timer, press C followed by the number of minutes you want and finally ENTER. Decimals are allowed. For example typing C25.5 followed by ENTER will change the time remaining to 25 minutes 30 seconds.
+To change the remaining time left on the timer, press C followed by the number of minutes you want and finally ENTER. Inputs should be entered like decimal numbers, except the fraction is the number of seconds remaining. For example, entering 1.23 means there is 1 minute and 23 seconds left. This makes it easy to enter specific time values, without having to convert between 1/100ths and 1/60ths of a minute. Fractions of 1 second are ignored, so 1.234 is the same as 1.23.
 
 To cancel this, without changing the time, simply press C again.
 
-This only accepts values between 0 and 60 minutes. Numbers outside this range are ignored. Entries that are not valid numbers are also ignored.
+This only accepts values between 0 and 60 minutes. Numbers outside this range are ignored, including inputs with 60 or more seconds after the full stop. Entries that are not valid numbers are also ignored.
 
 ## Start or Stop the Timer
 
