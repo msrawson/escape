@@ -57,11 +57,12 @@ preload()
 
 screen.blit(office_background, (0, 0))
 
+NO_MODE = 0
 TIMER_MODE = 1
 HINT_MODE = 2
 MESSAGE_MODE = 3
 FLICKER_MODE = 4
-mode = TIMER_MODE
+mode = NO_MODE
 timer_running = False
 
 FONT_NAME = "Georgia"
@@ -145,7 +146,7 @@ def select_mode(event_key) -> None:
         case pygame.K_h:
             mode = HINT_MODE
             hint_number = 0
-        case pygame.K_m:
+        case pygame.K_m | pygame.K_x:
             mode = MESSAGE_MODE
             message_number = 0
         case pygame.K_s:
@@ -282,8 +283,10 @@ while running:
         draw_message()
     elif mode == FLICKER_MODE:
         draw_flicker()
-    else:
+    elif mode == TIMER_MODE:
         draw_timer()
+    else:
+        draw_background()
 
     # escape_count should die off fairly quickly
     if frame % 10 == 0 and escape_count > 0:

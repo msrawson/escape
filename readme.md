@@ -12,7 +12,7 @@ The app runs in full screen mode by default but you are, of course, free to adap
 
 There are 4 main screens: Timer, Hints, Messages, and Flicker. These are activated by pressing T, H, M, or F respectively.
 
-When the app is launched you will see the Timer screen and the clock will be stopped (more information below).
+When the app is launched there is no selected mode. You will simply see the office background image and the timer is not initially running. If you have to restart the app for any reason, this allows you to change the time before it is displayed (see below).
 
 When you select the Hints or Messages screen it will initially display only the default background image. (This can be useful if you don't want any text on screen for a while!)
 
